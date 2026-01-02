@@ -2,8 +2,11 @@
 
 #include <windows.h>
 
-// Função para criar a janela de cadastro de máquinas
+// Function to register the machine window class
+BOOL RegisterMachineClass(HINSTANCE hiNSTANCE);
+
+// Function to create the machine registration window
 void CreateMachineWindow(HINSTANCE hInstance, HWND hwndParent);
 
-// Procedimento da janela de cadastro de máquinas
+// Window procedure for handling messages for the machine registration window
 LRESULT CALLBACK MachineWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);

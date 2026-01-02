@@ -125,8 +125,10 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="login.h" />
-    <ClInclude Include="regmac.h" />
-    <ClInclude Include="Resource.h" />
+    <ClInclude Include="mainWin.h" />
+    <ClInclude Include="regMac.h" />
+    <ClInclude Include="regParts.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -140,7 +142,9 @@
   <ItemGroup>
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="regmac.cpp" />
+    <ClCompile Include="mainWin.cpp" />
+    <ClCompile Include="regMac.cpp" />
+    <ClCompile Include="regParts.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,6 @@
 #pragma once
-#include "Resource.h"
+#include "resource.h"
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-void AddMenus(HWND);
+extern HMENU hMenu;
+extern HINSTANCE g_hInstance;
+extern HWND g_hwndMain;
