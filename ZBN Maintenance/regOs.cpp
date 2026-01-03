@@ -62,6 +62,10 @@ void CreateOsWindow(HINSTANCE hInstance, HWND hwndParent) {
 		hInstance,
 		NULL
 	);
+
+	if (hOsWnd == NULL) {
+		MessageBox(hwndParent, L"Falha ao criar a janela de Abertura de O.S!", L"Erro", MB_ICONERROR);
+	}
 }
 
 // ====================================================

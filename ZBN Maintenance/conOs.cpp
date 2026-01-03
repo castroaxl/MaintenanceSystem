@@ -63,6 +63,11 @@ void CreateConOsWindow(HINSTANCE hInstance, HWND hwndParent) {
 		NULL
 	);
 
+	if (hConOsWnd == NULL) {
+		MessageBox(hwndParent, L"Falha ao criar a janela de Consulta de O.S!", L"Erro", MB_ICONERROR);
+		return;
+	}
+
 }
 
 // ====================================================

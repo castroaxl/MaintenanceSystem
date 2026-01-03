@@ -12,6 +12,7 @@
 #include "regOs.h"
 #include "finOs.h"
 #include "conOs.h"
+#include "inWeld.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -57,6 +58,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
     }
     if (!RegisterConOsClass(hInstance)) {
         MessageBox(NULL, L"Falha ao registrar janela de Consulta de O.S!", L"Erro", MB_ICONERROR);
+        return 0;
+	}
+    if (!RegisterInWeldClass(hInstance)) {
+        MessageBox(NULL, L"Falha ao registrar janela de manutenção em máquinas de solda!", L"Erro", MB_ICONERROR);
         return 0;
 	}
 

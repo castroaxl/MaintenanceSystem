@@ -7,6 +7,7 @@
 #include "regOs.h"
 #include "finOs.h"
 #include "conOs.h"
+#include "inWeld.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -62,7 +63,9 @@ LRESULT CALLBACK MainWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 			case IDM_COORDER:
 				CreateConOsWindow(g_hInstance, hwnd);
 				break;
-
+			case IDM_REGWELD:
+				CreateInWeldWindow(g_hInstance, hwnd);
+				break;
 
 			default:
 				return DefWindowProc(hwnd, uMsg, wParam, lParam);
@@ -113,7 +116,7 @@ void AddMenus(HWND hwnd)
 
 	//Weld Menu Items
 	AppendMenuW(hWeldMenu, MF_STRING, IDM_REGWELD, L"Abrir Manutenção");
-	AppendMenuW(hWeldMenu, MF_STRING, IDM_REGPARTS, L"Fechar Manutenção");
+	AppendMenuW(hWeldMenu, MF_STRING, IDM_CLOWELD, L"Fechar Manutenção");
 
 	//Main Menu Items
 	AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hRegisterMenu, L"Cadastro");

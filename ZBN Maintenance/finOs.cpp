@@ -61,6 +61,10 @@ void CreateFinOsWindow(HINSTANCE hInstance, HWND hwndParent) {
 		hInstance,
 		NULL
 	);
+
+	if (hFinOsWnd == NULL) {
+		MessageBox(hwndParent, L"Falha ao criar a janela de Finalização de O.S!", L"Erro", MB_ICONERROR);
+	}
 }
 
 // ====================================================
