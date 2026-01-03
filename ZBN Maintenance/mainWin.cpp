@@ -8,6 +8,7 @@
 #include "finOs.h"
 #include "conOs.h"
 #include "inWeld.h"
+#include "finWeld.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -65,6 +66,9 @@ LRESULT CALLBACK MainWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 				break;
 			case IDM_REGWELD:
 				CreateInWeldWindow(g_hInstance, hwnd);
+				break;
+			case IDM_CLOWELD:
+				CreateFinWeldWindow(g_hInstance, hwnd);
 				break;
 
 			default:

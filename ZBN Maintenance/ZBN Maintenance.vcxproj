@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClInclude Include="conOs.h" />
     <ClInclude Include="finOs.h" />
+    <ClInclude Include="finWeld.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="inWeld.h" />
     <ClInclude Include="login.h" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="conOs.cpp" />
     <ClCompile Include="finOs.cpp" />
+    <ClCompile Include="finWeld.cpp" />
     <ClCompile Include="inWeld.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />

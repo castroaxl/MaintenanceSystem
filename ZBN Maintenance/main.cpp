@@ -13,6 +13,7 @@
 #include "finOs.h"
 #include "conOs.h"
 #include "inWeld.h"
+#include "finWeld.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -64,7 +65,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         MessageBox(NULL, L"Falha ao registrar janela de manutenção em máquinas de solda!", L"Erro", MB_ICONERROR);
         return 0;
 	}
-
+    if (!RegisterFinWeldClass(hInstance)) {
+        MessageBox(NULL, L"Falha ao registrar janela de finalização de manutenção em máquinas de solda!", L"Erro", MB_ICONERROR);
+        return 0;
+    }
     // Create the window.
 
     HWND hwnd = CreateWindowEx(
