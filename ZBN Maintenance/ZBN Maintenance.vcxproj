@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="conOs.h" />
     <ClInclude Include="finOs.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="login.h" />
@@ -142,6 +143,7 @@
     <Image Include="ZBN Maintenance.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="conOs.cpp" />
     <ClCompile Include="finOs.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />

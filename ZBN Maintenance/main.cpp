@@ -11,6 +11,7 @@
 #include "regParts.h"
 #include "regOs.h"
 #include "finOs.h"
+#include "conOs.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -54,6 +55,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         MessageBox(NULL, L"Falha ao registrar janela de Finalização de O.S!", L"Erro", MB_ICONERROR);
         return 0;
     }
+    if (!RegisterConOsClass(hInstance)) {
+        MessageBox(NULL, L"Falha ao registrar janela de Consulta de O.S!", L"Erro", MB_ICONERROR);
+        return 0;
+	}
 
     // Create the window.
 

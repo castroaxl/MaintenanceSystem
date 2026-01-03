@@ -5,7 +5,7 @@
 
 #pragma comment(lib, "comctl32.lib")
 
-// // Handle for the OS registration window
+// Handle for the OS registration window
 static HWND hFinOsWnd = NULL;
 
 BOOL RegisterFinOsClass(HINSTANCE hInstance) {

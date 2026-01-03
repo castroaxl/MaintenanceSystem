@@ -6,6 +6,7 @@
 #include "regParts.h"
 #include "regOs.h"
 #include "finOs.h"
+#include "conOs.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -58,8 +59,9 @@ LRESULT CALLBACK MainWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 			case IDM_CLORDER:
 				CreateFinOsWindow(g_hInstance, hwnd);
 				break;
-
-
+			case IDM_COORDER:
+				CreateConOsWindow(g_hInstance, hwnd);
+				break;
 
 
 			default:
@@ -107,7 +109,7 @@ void AddMenus(HWND hwnd)
 	//Order Menu Items
 	AppendMenuW(hOrderMenu, MF_STRING, IDM_OPORDER, L"Abrir O.S");
 	AppendMenuW(hOrderMenu, MF_STRING, IDM_CLORDER, L"Fechar O.S");
-	AppendMenuW(hOrderMenu, MF_STRING, IDM_STORDER, L"Consultar O.S");
+	AppendMenuW(hOrderMenu, MF_STRING, IDM_COORDER, L"Consultar O.S");
 
 	//Weld Menu Items
 	AppendMenuW(hWeldMenu, MF_STRING, IDM_REGWELD, L"Abrir Manutenção");

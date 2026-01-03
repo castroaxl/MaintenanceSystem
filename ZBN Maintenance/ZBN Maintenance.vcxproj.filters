@@ -45,6 +45,9 @@
     <ClInclude Include="finOs.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="conOs.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ZBN Maintenance.rc">
@@ -79,6 +82,9 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="finOs.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="conOs.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
