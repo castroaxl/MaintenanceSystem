@@ -5,6 +5,7 @@
 #include "regMac.h"
 #include "regParts.h"
 #include "regOs.h"
+#include "finOs.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -54,6 +55,11 @@ LRESULT CALLBACK MainWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 			case IDM_OPORDER:
 				CreateOsWindow(g_hInstance, hwnd);
 				break;
+			case IDM_CLORDER:
+				CreateFinOsWindow(g_hInstance, hwnd);
+				break;
+
+
 
 
 			default:
