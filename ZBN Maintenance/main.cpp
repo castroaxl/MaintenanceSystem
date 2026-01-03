@@ -9,6 +9,7 @@
 #include "mainWin.h"
 #include "regMac.h"
 #include "regParts.h"
+#include "regOs.h"
 
 
 #pragma comment(lib, "comctl32.lib")
@@ -43,6 +44,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         MessageBox(NULL, L"Falha ao registrar janela de peças!", L"Erro", MB_ICONERROR);
         return 0;
     }
+
+    if (!RegisterOsClass(hInstance)) {
+        MessageBox(NULL, L"Falha ao registrar janela de O.S!", L"Erro", MB_ICONERROR);
+        return 0;
+	}
 
 
     // Create the window.

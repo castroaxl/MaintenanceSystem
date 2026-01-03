@@ -10,6 +10,7 @@
 #define IDM_CLORDER					2005
 #define IDM_STORDER					2006
 
+
 #define IDS_APP_TITLE				103
 
 #define IDR_MAINFRAME				128

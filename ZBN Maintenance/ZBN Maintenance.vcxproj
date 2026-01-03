@@ -127,6 +127,7 @@
     <ClInclude Include="login.h" />
     <ClInclude Include="mainWin.h" />
     <ClInclude Include="regMac.h" />
+    <ClInclude Include="regOs.h" />
     <ClInclude Include="regParts.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWin.cpp" />
     <ClCompile Include="regMac.cpp" />
+    <ClCompile Include="regOs.cpp" />
     <ClCompile Include="regParts.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
