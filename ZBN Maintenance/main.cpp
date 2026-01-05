@@ -7,6 +7,7 @@
 #include "main.h"
 #include "resource.h"
 #include "mainWin.h"
+#include "login.h"
 #include "regMac.h"
 #include "regParts.h"
 #include "regOs.h"
@@ -22,6 +23,49 @@ HMENU hMenu;
 HINSTANCE g_hInstance;
 HWND g_hwndMain;
 
+BOOL ShowLoginDialog(HINSTANCE hInstance)
+{
+    if (!RegisterLoginClass(hInstance)) {
+        MessageBox(NULL, L"Falha ao registrar janela de login!", L"Erro", MB_ICONERROR);
+        return FALSE;
+    }
+
+    HWND hwndLogin = CreateLoginWindow(hInstance, NULL);
+    if (hwndLogin == NULL) {
+        MessageBox(NULL, L"Falha ao criar janela de login!", L"Erro", MB_ICONERROR);
+        return FALSE;
+    }
+
+    // Center the login dialog on the screen
+    RECT rcLogin, rcDesktop;
+    GetWindowRect(hwndLogin, &rcLogin);
+    GetWindowRect(GetDesktopWindow(), &rcDesktop);
+
+    int xPos = (rcDesktop.right - rcDesktop.left - (rcLogin.right - rcLogin.left)) / 2;
+    int yPos = (rcDesktop.bottom - rcDesktop.top - (rcLogin.bottom - rcLogin.top)) / 2;
+    SetWindowPos(hwndLogin, NULL, xPos, yPos, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
+
+    ShowWindow(hwndLogin, SW_SHOW);
+    UpdateWindow(hwndLogin);
+
+
+    // Message loop for the login dialog
+    MSG msg = { 0 };
+  
+    while (IsWindow(hwndLogin) && GetMessage(&msg, NULL, 0, 0))
+    {
+        if (!IsDialogMessage(hwndLogin, &msg))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+
+    
+    extern BOOL g_bLoginSuccessful;
+    return g_bLoginSuccessful;
+}
+
 //Entry point for a Windows application
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
@@ -31,7 +75,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	icex.dwSize = sizeof(INITCOMMONCONTROLSEX);
 	icex.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&icex);
-
 
     if (!RegisterMainClass(hInstance)) {
         MessageBox(NULL, L"Falha ao registrar janela principal!", L"Erro", MB_ICONERROR);
@@ -69,6 +112,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         MessageBox(NULL, L"Falha ao registrar janela de finalização de manutenção em máquinas de solda!", L"Erro", MB_ICONERROR);
         return 0;
     }
+
+    if (!ShowLoginDialog(hInstance)) {
+        MessageBox(NULL, L"Login cancelado ou falhou. A aplicação será encerrada.",
+            L"Login", MB_ICONINFORMATION);
+        return 0;
+    }
+
     // Create the window.
 
     HWND hwnd = CreateWindowEx(
@@ -88,8 +138,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
     if (hwnd == NULL)
     {
+        DWORD error = GetLastError();
+        wchar_t errorMsg[256];
+        wsprintf(errorMsg, L"Falha ao criar janela principal! Erro: %d", error);
+        MessageBox(NULL, errorMsg, L"Erro", MB_ICONERROR);
         return 0;
     }
+
     g_hwndMain = hwnd;
 
     ShowWindow(hwnd, nCmdShow);

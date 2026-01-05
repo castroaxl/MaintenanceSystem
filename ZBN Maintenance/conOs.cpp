@@ -78,7 +78,6 @@ LRESULT CALLBACK ConOsWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
 	switch (uMsg) {
 	case WM_DESTROY:
 		hConOsWnd = NULL; // Clear the handle when the window is destroyed
-		PostQuitMessage(0);
 		return 0;
 	// Handle other messages as needed
 	default:

@@ -2,6 +2,7 @@
 // Arquivo de inclusão gerado pelo Microsoft Visual C++.
 // Utilizado por ZBN Maintenance.rc
 
+// Menu Commands
 #define IDM_REGMAC	 				2000
 #define IDM_REGPARTS				2001
 #define IDM_REGWELD					2002
@@ -10,9 +11,21 @@
 #define IDM_CLORDER					2005
 #define IDM_COORDER					2006
 
+// Icons
+#define IDI_APP_ICON				3001
+#define IDI_ICON1					3002
+
+
+// Login Controls
+#define IDC_USERNAME				4000
+#define IDC_PASSWORD				4001
+#define IDC_LOGIN_BTN				4002
+#define IDC_CANCEL_BTN				4003
+#define IDC_STATUS_TEXT				4004
 
 
 #define IDS_APP_TITLE				103
+#define IDD_LOGIN_DIALOG			104
 
 #define IDR_MAINFRAME				128
 #define IDD_ZBNMAINTENANCE_DIALOG	102
