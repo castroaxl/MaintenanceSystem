@@ -76,10 +76,7 @@ LRESULT CALLBACK LoginWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
 
     case WM_CREATE:
     {
-        hFont = CreateFont(16, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-            DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-            DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE,
-            L"Segoe UI");
+        HFONT hDefaultFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
 
         // Título
         HWND hTitle = CreateWindow(L"STATIC", L"ZBN Manutenção",
@@ -92,20 +89,19 @@ LRESULT CALLBACK LoginWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             WS_CHILD | WS_VISIBLE,
             50, 70, 100, 25, hWnd, NULL, g_hInstance, NULL);
 
-        hEditUser = CreateWindow(L"EDIT", L"admin",  // Pre-carregado para teste
+        HWND hEditUser = CreateWindow(L"EDIT", L"", // Vazio
             WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL,
             150, 70, 150, 25, hWnd, (HMENU)IDC_USERNAME, g_hInstance, NULL);
-        SendMessage(hEditUser, WM_SETFONT, (WPARAM)hFont, TRUE);
 
         // Senha
         CreateWindow(L"STATIC", L"Senha:",
             WS_CHILD | WS_VISIBLE,
             50, 110, 100, 25, hWnd, NULL, g_hInstance, NULL);
 
-        hEditPass = CreateWindow(L"EDIT", L"123",  // Pre-carregado para teste
+        HWND hEditPass = CreateWindow(L"EDIT", L"", 
             WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | ES_PASSWORD,
             150, 110, 150, 25, hWnd, (HMENU)IDC_PASSWORD, g_hInstance, NULL);
-        SendMessage(hEditPass, WM_SETFONT, (WPARAM)hFont, TRUE);
+        
 
         // Botões
         CreateWindow(L"BUTTON", L"Login",

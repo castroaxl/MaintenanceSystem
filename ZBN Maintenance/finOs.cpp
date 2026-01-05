@@ -2,6 +2,7 @@
 #include <commctrl.h>
 #include "finOs.h"
 #include "main.h"
+#include "Utils.h"
 
 #pragma comment(lib, "comctl32.lib")
 
@@ -26,45 +27,23 @@ BOOL RegisterFinOsClass(HINSTANCE hInstance) {
 // ====================================================
 // FUNCTION: CreateFinOsWindow
 // ====================================================
-
 void CreateFinOsWindow(HINSTANCE hInstance, HWND hwndParent) {
-	// Get the dimensions of the main window's client area
-	RECT rcMainWindow; 
-	GetClientRect(hwndParent, &rcMainWindow);
-	
-	// Convert the top-left point of the client area to screen coordinates
-	POINT ptLeftTop = { 0, 0 };
-	ClientToScreen(hwndParent, &ptLeftTop);
-	
-	// Define the size of the FinOs window
-	int width = 800;
-	int height = 600;
-	
-	// Check if the FinOs window already exists
-	if (hFinOsWnd && IsWindow(hFinOsWnd)) {
-		// If the window already exists, bring it to the front
-		SetForegroundWindow(hFinOsWnd);
-		BringWindowToTop(hFinOsWnd);
+
+	HWND existingWnd = FindWindow(L"FinOsWindowClass", NULL);
+	if (existingWnd) {
+		SetForegroundWindow(existingWnd);
 		return;
 	}
-	hFinOsWnd = CreateWindowEx(
-		WS_EX_CLIENTEDGE,
-		L"FinOsWindowClass",
-		L"Finalização de O.S - ZBN Manutenção",
+
+	HWND hPartsWnd = CreateWindowEx(
+		WS_EX_CLIENTEDGE, L"FinOsWindowClass", L"Finalização de O.S - ZBN Manutenção",
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
-		ptLeftTop.x,
-		ptLeftTop.y,
-		width,
-		height,
-		hwndParent,
-		NULL,
-		hInstance,
-		NULL
+		CW_USEDEFAULT, CW_USEDEFAULT, 600, 400,
+		hwndParent, NULL, hInstance, NULL
 	);
 
-	if (hFinOsWnd == NULL) {
-		MessageBox(hwndParent, L"Falha ao criar a janela de Finalização de O.S!", L"Erro", MB_ICONERROR);
-	}
+	CenterWindow(hPartsWnd);
+
 }
 
 // ====================================================

@@ -4,6 +4,7 @@
 
 #include <windows.h>
 #include <commctrl.h>
+#include <strsafe.h>
 #include "main.h"
 #include "resource.h"
 #include "mainWin.h"
@@ -136,11 +137,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
         NULL        // Additional application data
     );
 
-    if (hwnd == NULL)
-    {
-        DWORD error = GetLastError();
+    if (hwnd == NULL) {
         wchar_t errorMsg[256];
-        wsprintf(errorMsg, L"Falha ao criar janela principal! Erro: %d", error);
+        // Mais seguro que wsprintf
+        StringCchPrintf(errorMsg, ARRAYSIZE(errorMsg), L"Falha ao criar janela! Erro: %d", GetLastError());
         MessageBox(NULL, errorMsg, L"Erro", MB_ICONERROR);
         return 0;
     }
